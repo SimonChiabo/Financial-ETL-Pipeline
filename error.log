@@ -1,0 +1,4 @@
+TXN-1001 1 validation error for FinancialRecord
+account_code
+  Input should be a valid string [type=string_type, input_value=10100, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type

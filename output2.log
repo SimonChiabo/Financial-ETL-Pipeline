@@ -1,0 +1,19 @@
+{"timestamp": "2026-04-02T17:47:56.134894", "level": "INFO", "message": "Starting async ETL pipeline process", "logger": "financial_etl.main"}
+{"timestamp": "2026-04-02T17:47:56.235643", "level": "INFO", "message": "Starting Bronze layer extraction (Lazy mode)", "logger": "financial_etl.validator"}
+{"timestamp": "2026-04-02T17:47:56.242514", "level": "INFO", "message": "Starting Silver layer processing", "logger": "financial_etl.validator"}
+{"timestamp": "2026-04-02T17:47:56.242514", "level": "ERROR", "message": "Pydantic Validation Error.", "logger": "financial_etl.validator", "transaction_id": "TXN-2001"}
+{"timestamp": "2026-04-02T17:47:56.242514", "level": "WARNING", "message": "Duplicate detected via idempotency key.", "logger": "financial_etl.validator", "transaction_id": "TXN-1001"}
+{"timestamp": "2026-04-02T17:47:56.243521", "level": "ERROR", "message": "Pydantic Validation Error.", "logger": "financial_etl.validator", "transaction_id": "TXN-5001"}
+{"timestamp": "2026-04-02T17:47:56.256716", "level": "INFO", "message": "Accounting guardrail passed: debits == credits", "logger": "financial_etl.validator"}
+{"timestamp": "2026-04-02T17:47:56.256716", "level": "INFO", "message": "Accounting guardrail passed: debits == credits", "logger": "financial_etl.validator"}
+{"timestamp": "2026-04-02T17:47:56.256716", "level": "ERROR", "message": "Accounting guardrail failed. Debits (450.7500000000) != Credits (450.0000000000)", "logger": "financial_etl.validator"}
+{"timestamp": "2026-04-02T17:47:56.256716", "level": "ERROR", "message": "Batch completely failed accounting guardrail. Quarantining.", "logger": "financial_etl.validator"}
+{"timestamp": "2026-04-02T17:47:56.265469", "level": "ERROR", "message": "Accounting guardrail failed: Partial batch missing debit or credit", "logger": "financial_etl.validator"}
+{"timestamp": "2026-04-02T17:47:56.265469", "level": "ERROR", "message": "Batch completely failed accounting guardrail. Quarantining.", "logger": "financial_etl.validator"}
+
+--- STRESS TEST SUMMARY ---
+Registros procesados: 10
+Registros en Silver: 4 (Lote 1000 y Lote 3000)
+Registros en Quarantine: 6 (Fallas de fecha, balance, duplicado, tipo y balance de lote parcial).
+---------------------------
+
