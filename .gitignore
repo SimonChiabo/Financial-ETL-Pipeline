@@ -19,3 +19,6 @@ htmlcov/
 # Data
 *.csv
 *.log
+
+# Editor & AI Context
+.ai_context
