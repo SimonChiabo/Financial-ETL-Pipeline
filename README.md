@@ -16,14 +16,14 @@ We implement a Medallion Architecture with aggressive validation checkpoints:
 
 ```mermaid
 graph TD
-    A[Raw Transactions CSV] -->|Extract: Lazy pl.scan_csv| B(Bronze Layer)
-    B -->|Pydantic V2 Models| C{Silver Quality Gate}
-    C -->|Invalid format OR Negative Amount| F[Quarantine / DLQ]
-    C -->|Valid Model| D{Idempotency Check}
-    D -->|Hash Exists| F
-    D -->|New Record| E{Accounting Guardrail}
-    E -->|sum(Debits) != sum(Credits)| F
-    E -->|sum(Debits) == sum(Credits)| G[Gold Layer / Valid DataFrame]
+    A[Raw Transactions CSV] -->|"Extract: Lazy pl.scan_csv"| B(Bronze Layer)
+    B -->|"Pydantic V2 Models"| C{Silver Quality Gate}
+    C -->|"Invalid format OR Negative Amount"| F[Quarantine / DLQ]
+    C -->|"Valid Model"| D{Idempotency Check}
+    D -->|"Hash Exists"| F
+    D -->|"New Record"| E{Accounting Guardrail}
+    E -->|"sum(Debits) != sum(Credits)"| F
+    E -->|"sum(Debits) == sum(Credits)"| G[Gold Layer / Valid DataFrame]
     
     style F fill:#f9d0c4,stroke:#333,stroke-width:2px;
     style G fill:#d4f1f4,stroke:#333,stroke-width:2px;
