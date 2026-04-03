@@ -15,7 +15,7 @@ This **Financial ETL Pipeline** solves these systemic problems by implementing a
 We implement a Medallion Architecture with aggressive validation checkpoints:
 
 ```mermaid
-graph TD
+flowchart TD
     A[Raw Transactions CSV] -->|"Extract: Lazy pl.scan_csv"| B(Bronze Layer)
     B -->|"Pydantic V2 Models"| C{Silver Quality Gate}
     C -->|"Invalid format OR Negative Amount"| F[Quarantine / DLQ]
@@ -24,10 +24,9 @@ graph TD
     D -->|"New Record"| E{Accounting Guardrail}
     E -->|"sum(Debits) != sum(Credits)"| F
     E -->|"sum(Debits) == sum(Credits)"| G[Gold Layer / Valid DataFrame]
-    
-    linkStyle default color:#f5f5f5;
-    style F fill:#ff4d4d,stroke:#ffffff,stroke-width:2px,color:#ffffff;
-    style G fill:#33cc33,stroke:#ffffff,stroke-width:2px,color:#ffffff;
+
+    style F fill:#d93025,stroke:#fff,stroke-width:2px,color:#fff
+    style G fill:#1e8e3e,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 ## Technology Stack Rationale
