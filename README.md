@@ -25,8 +25,9 @@ graph TD
     E -->|"sum(Debits) != sum(Credits)"| F
     E -->|"sum(Debits) == sum(Credits)"| G[Gold Layer / Valid DataFrame]
     
-    style F fill:#f9d0c4,stroke:#333,stroke-width:2px;
-    style G fill:#d4f1f4,stroke:#333,stroke-width:2px;
+    linkStyle default color:#f5f5f5;
+    style F fill:#ff4d4d,stroke:#ffffff,stroke-width:2px,color:#ffffff;
+    style G fill:#33cc33,stroke:#ffffff,stroke-width:2px,color:#ffffff;
 ```
 
 ## Technology Stack Rationale
